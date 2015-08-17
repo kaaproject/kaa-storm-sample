@@ -1,6 +1,6 @@
 
 
-package org.kaaproject.examples.storm.common;
+package org.kaaproject.examples.storm.server.common;
 
 
 public class Constants {

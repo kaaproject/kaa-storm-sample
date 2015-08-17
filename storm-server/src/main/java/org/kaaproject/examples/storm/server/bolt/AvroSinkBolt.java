@@ -1,4 +1,4 @@
-package org.kaaproject.examples.storm.bolt;
+package org.kaaproject.examples.storm.server.bolt;
 
 import backtype.storm.task.OutputCollector;
 import backtype.storm.task.TopologyContext;
@@ -6,12 +6,12 @@ import backtype.storm.topology.IRichBolt;
 import backtype.storm.topology.OutputFieldsDeclarer;
 import backtype.storm.tuple.Tuple;
 import org.apache.flume.Event;
+import org.kaaproject.examples.storm.server.producer.AvroFlumeEventProducer;
 import org.kaaproject.kaa.examples.powerplant.PowerReport;
 import org.kaaproject.kaa.examples.powerplant.PowerSample;
 import org.kaaproject.kaa.server.common.log.shared.KaaFlumeEventReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.kaaproject.examples.storm.producer.AvroFlumeEventProducer;
 
 import java.nio.ByteBuffer;
 import java.util.Map;
@@ -65,12 +65,12 @@ public class AvroSinkBolt implements IRichBolt {
             }
             LOG.info("Total records received: " + reportsCount);
             LOG.info("Total samples received: " + samplesCount);
-            //All seems to be nice, notify org.kaaproject.examples.storm.spout about it
+            //All seems to be nice, notify storm.spout about it
             this.collector.ack(input);
         } catch (Exception e) {
             LOG.warn("Failing tuple: " + input);
             LOG.warn("Exception: ", e);
-            //Notify org.kaaproject.examples.storm.spout about fail
+            //Notify storm.spout about fail
             this.collector.fail(input);
         }
     }

@@ -1,4 +1,4 @@
-package org.kaaproject.examples.storm;
+package storm.server;
 /*
  * Copyright 2014-2015 CyberVision, Inc.
  *
@@ -79,7 +79,7 @@ public class DataCollectionDemo {
                 return LogUploadStrategyDecision.NOOP;
             }
         });
-        // Start the Kaa client and connect it to the Kaa server.
+        // Start the Kaa client and connect it to the Kaa storm.server.
         kaaClient.start();
 
         // Send LOGS_TO_SEND_COUNT logs in a loop.

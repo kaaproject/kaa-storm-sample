@@ -2,19 +2,23 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!--<parent>-->
+        <!--<artifactId>server</artifactId>-->
+        <!--<groupId>org.kaaproject.examples.storm</groupId>-->
+        <!--<version>1.0-SNAPSHOT</version>-->
+    <!--</parent>-->
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.kaaproject.examples</groupId>
-    <artifactId>storm</artifactId>
-    <packaging>pom</packaging>
+    <groupId>org.kaaproject.examples.storm</groupId>
+    <artifactId>server</artifactId>
     <version>1.0-SNAPSHOT</version>
+
     <properties>
         <flume.version>1.5.0</flume.version>
         <hadoop.version>2.4.0</hadoop.version>
         <kaa.version>0.7.1</kaa.version>
         <storm.version>0.10.0-beta1</storm.version>
     </properties>
-
 
     <repositories>
         <repository>
@@ -129,14 +133,34 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <configuration>
-                    <archive>
-                        <manifest>
-                            <mainClass>org.kaaproject.examples.storm.Main</mainClass>
-                        </manifest>
-                    </archive>
-                </configuration>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>2.3</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <filters>
+                                <filter>
+                                    <artifact>*:*</artifact>
+                                    <excludes>
+                                        <exclude>META-INF/*.SF</exclude>
+                                        <exclude>META-INF/*.DSA</exclude>
+                                        <exclude>META-INF/*.RSA</exclude>
+                                    </excludes>
+                                </filter>
+                            </filters>
+                            <transformers>
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>org.kaaproject.examples.storm.server.Main</mainClass>
+                                </transformer>
+                            </transformers>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>com.googlecode.addjars-maven-plugin</groupId>
@@ -157,6 +181,15 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
         </plugins>
         <pluginManagement>
             <plugins>
@@ -175,15 +208,7 @@
                         <skipTests>false</skipTests>
                     </configuration>
                 </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.1</version>
-                    <configuration>
-                        <source>1.7</source>
-                        <target>1.7</target>
-                    </configuration>
-                </plugin>
+
                 <plugin>
                     <groupId>org.eclipse.m2e</groupId>
                     <artifactId>lifecycle-mapping</artifactId>
@@ -208,9 +233,9 @@
                         </lifecycleMappingMetadata>
                     </configuration>
                 </plugin>
+
             </plugins>
         </pluginManagement>
     </build>
-
 
 </project>

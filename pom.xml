@@ -11,6 +11,7 @@
     <modules>
         <module>client</module>
         <module>storm</module>
+        <module>storm-storm.server</module>
     </modules>
 
 
