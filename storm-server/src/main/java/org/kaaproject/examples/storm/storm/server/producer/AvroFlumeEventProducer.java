@@ -1,6 +1,6 @@
 
 
-package org.kaaproject.examples.storm.server.producer;
+package org.kaaproject.examples.storm.storm.server.producer;
 
 import backtype.storm.tuple.Tuple;
 import org.apache.flume.Event;

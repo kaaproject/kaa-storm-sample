@@ -55,7 +55,7 @@
                             <transformers>
                                 <transformer
                                         implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>storm.storm.storm.server.DataCollectionDemo</mainClass>
+                                    <mainClass>org.kaaproject.examples.storm.DataCollectionDemo</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>

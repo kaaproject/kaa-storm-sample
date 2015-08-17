@@ -1,6 +1,6 @@
 
 
-package org.kaaproject.examples.storm.server.spout;
+package org.kaaproject.examples.storm.storm.server.spout;
 
 import backtype.storm.spout.SpoutOutputCollector;
 import backtype.storm.task.TopologyContext;
@@ -13,8 +13,8 @@ import com.google.common.collect.Maps;
 import org.apache.flume.*;
 import org.apache.flume.instrumentation.SinkCounter;
 import org.apache.flume.node.MaterializedConfiguration;
-import org.kaaproject.examples.storm.server.common.*;
-import org.kaaproject.examples.storm.server.producer.AvroTupleProducer;
+import org.kaaproject.examples.storm.storm.server.common.*;
+import org.kaaproject.examples.storm.storm.server.producer.AvroTupleProducer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -181,7 +181,7 @@ public class 	FlumeSourceSpout implements IRichSpout {
 				//Emit tuple with ability to process fail state
 				this.outputCollector.emit(vals, event);
 				LOG.debug("NextTuple:"
-						+ event.getHeaders().get(org.kaaproject.examples.storm.server.common.Constants.MESSAGE_ID));
+						+ event.getHeaders().get(org.kaaproject.examples.storm.storm.server.common.Constants.MESSAGE_ID));
 			}
 			transaction.commit();
 			sinkCounter.addToEventDrainSuccessCount(size);

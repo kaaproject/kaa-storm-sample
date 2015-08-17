@@ -1,6 +1,6 @@
 
 
-package org.kaaproject.examples.storm.server.producer;
+package org.kaaproject.examples.storm.storm.server.producer;
 
 import backtype.storm.topology.OutputFieldsDeclarer;
 import backtype.storm.tuple.Values;

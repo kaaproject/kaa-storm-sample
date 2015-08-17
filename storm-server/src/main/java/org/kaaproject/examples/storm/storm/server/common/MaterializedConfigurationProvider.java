@@ -1,6 +1,6 @@
 
 
-package org.kaaproject.examples.storm.server.common;
+package org.kaaproject.examples.storm.storm.server.common;
 
 import org.apache.flume.node.MaterializedConfiguration;
 

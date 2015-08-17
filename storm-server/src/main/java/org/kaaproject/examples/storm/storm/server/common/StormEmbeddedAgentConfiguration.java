@@ -1,6 +1,6 @@
 
 
-package org.kaaproject.examples.storm.server.common;
+package org.kaaproject.examples.storm.storm.server.common;
 
 import com.google.common.base.Joiner;
 import com.google.common.collect.Maps;

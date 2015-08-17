@@ -1,4 +1,4 @@
-package org.kaaproject.examples.storm.server.bolt;
+package org.kaaproject.examples.storm.storm.server.bolt;
 
 import backtype.storm.task.OutputCollector;
 import backtype.storm.task.TopologyContext;
@@ -6,7 +6,7 @@ import backtype.storm.topology.IRichBolt;
 import backtype.storm.topology.OutputFieldsDeclarer;
 import backtype.storm.tuple.Tuple;
 import org.apache.flume.Event;
-import org.kaaproject.examples.storm.server.producer.AvroFlumeEventProducer;
+import org.kaaproject.examples.storm.storm.server.producer.AvroFlumeEventProducer;
 import org.kaaproject.kaa.examples.powerplant.PowerReport;
 import org.kaaproject.kaa.examples.powerplant.PowerSample;
 import org.kaaproject.kaa.server.common.log.shared.KaaFlumeEventReader;
