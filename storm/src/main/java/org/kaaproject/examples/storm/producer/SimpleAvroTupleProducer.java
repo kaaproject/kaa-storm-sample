@@ -1,11 +1,11 @@
 
-package producer;
+package org.kaaproject.examples.storm.producer;
 
 import backtype.storm.topology.OutputFieldsDeclarer;
 import backtype.storm.tuple.Fields;
 import backtype.storm.tuple.Values;
 import org.apache.flume.Event;
-import common.Constants;
+import org.kaaproject.examples.storm.common.Constants;
 
 import java.util.UUID;
 

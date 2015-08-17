@@ -1,14 +1,16 @@
+package org.kaaproject.examples.storm;
+
 import backtype.storm.Config;
 import backtype.storm.LocalCluster;
 import backtype.storm.topology.TopologyBuilder;
 import ch.qos.logback.classic.Level;
 import ch.qos.logback.classic.Logger;
 import org.slf4j.LoggerFactory;
-import bolt.AvroSinkBolt;
-import producer.AvroTupleProducer;
-import producer.SimpleAvroFlumeEventProducer;
-import producer.SimpleAvroTupleProducer;
-import spout.FlumeSourceSpout;
+import org.kaaproject.examples.storm.bolt.AvroSinkBolt;
+import org.kaaproject.examples.storm.producer.AvroTupleProducer;
+import org.kaaproject.examples.storm.producer.SimpleAvroFlumeEventProducer;
+import org.kaaproject.examples.storm.producer.SimpleAvroTupleProducer;
+import org.kaaproject.examples.storm.spout.FlumeSourceSpout;
 import java.util.Properties;
 
 public class Main {
@@ -30,7 +32,7 @@ public class Main {
 
         AvroSinkBolt bolt = new AvroSinkBolt();
         bolt.setProducer(new SimpleAvroFlumeEventProducer());
-        //Set 2 threads bolt
+        //Set 2 threads org.kaaproject.examples.storm.bolt
         builder.setBolt("AvroSinkBolt", bolt, 2).shuffleGrouping("FlumeSourceSpout").addConfigurations(props);
 
         Config config = new Config(); //Default configuration

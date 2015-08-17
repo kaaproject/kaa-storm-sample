@@ -1,6 +1,6 @@
 
 
-package common;
+package org.kaaproject.examples.storm.common;
 
 import org.apache.flume.annotations.InterfaceAudience;
 import org.apache.flume.annotations.InterfaceStability;

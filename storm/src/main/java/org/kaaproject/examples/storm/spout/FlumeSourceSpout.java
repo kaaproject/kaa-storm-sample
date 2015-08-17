@@ -1,6 +1,6 @@
 
 
-package spout;
+package org.kaaproject.examples.storm.spout;
 
 import backtype.storm.spout.SpoutOutputCollector;
 import backtype.storm.task.TopologyContext;
@@ -15,10 +15,10 @@ import org.apache.flume.instrumentation.SinkCounter;
 import org.apache.flume.node.MaterializedConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import common.MaterializedConfigurationProvider;
-import common.StormEmbeddedAgentConfiguration;
-import producer.AvroTupleProducer;
-import common.Constants;
+import org.kaaproject.examples.storm.common.MaterializedConfigurationProvider;
+import org.kaaproject.examples.storm.common.StormEmbeddedAgentConfiguration;
+import org.kaaproject.examples.storm.producer.AvroTupleProducer;
+import org.kaaproject.examples.storm.common.Constants;
 
 import java.util.List;
 import java.util.Map;

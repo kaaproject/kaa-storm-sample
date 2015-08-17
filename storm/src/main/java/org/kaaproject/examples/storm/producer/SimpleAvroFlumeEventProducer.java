@@ -1,12 +1,12 @@
 
 
-package producer;
+package org.kaaproject.examples.storm.producer;
 
 import backtype.storm.tuple.Tuple;
 import org.apache.flume.Event;
 import org.apache.flume.event.EventBuilder;
 import org.apache.flume.event.SimpleEvent;
-import common.Constants;
+import org.kaaproject.examples.storm.common.Constants;
 
 import java.util.HashMap;
 import java.util.Map;

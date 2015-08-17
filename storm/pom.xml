@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.kaaproject.kaa</groupId>
-    <artifactId>storm-example</artifactId>
+    <groupId>org.kaaproject.examples</groupId>
+    <artifactId>storm</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <properties>
@@ -125,7 +125,19 @@
     </dependencies>
 
     <build>
+        <finalName>storm-server-example</finalName>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>org.kaaproject.examples.storm.Main</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>com.googlecode.addjars-maven-plugin</groupId>
                 <artifactId>addjars-maven-plugin</artifactId>

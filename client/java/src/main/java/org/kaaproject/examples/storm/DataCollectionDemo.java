@@ -1,3 +1,4 @@
+package org.kaaproject.examples.storm;
 /*
  * Copyright 2014-2015 CyberVision, Inc.
  *
