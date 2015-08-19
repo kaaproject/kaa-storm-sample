@@ -5,7 +5,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *	http://www.apache.org/licenses/LICENSE-2.0
+ *    http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -17,15 +17,15 @@
 
 #include <memory>
 #include <thread>
-#include <cstdint>
 #include <string>
 #include <chrono>
+#include <vector>
 #include <cstdlib>
+#include <cstddef>
 
 #include <kaa/Kaa.hpp>
-#include <kaa/log/ILogStorageStatus.hpp>
 #include <kaa/log/DefaultLogUploadStrategy.hpp>
-#include <kaa/KaaThread.hpp>
+#include <kaa/log/ILogStorageStatus.hpp>
 
 using namespace kaa;
 
@@ -34,22 +34,20 @@ using namespace kaa;
 // The default strategy uploads logs after either a threshold logs count
 // or a threshold logs size has been reached.
 // The following custom strategy uploads every log record as soon as it is created.
+// Set a custom strategy for uploading logs.
 class LogUploadStrategy : public DefaultLogUploadStrategy {
 public:
     LogUploadStrategy() : DefaultLogUploadStrategy() {}
 
     virtual LogUploadStrategyDecision isUploadNeeded(ILogStorageStatus& status)
     {
-     	if (status.getRecordsCount() >= 1) {
+         if (status.getRecordsCount() >= 1) {
             return LogUploadStrategyDecision::UPLOAD;
         }
         return LogUploadStrategyDecision::NOOP;
     }
 };
 
-int getRandomInt(int max) {
-    return rand() % max;
-}
 
 
 double getRandomDouble(int max) {
@@ -85,13 +83,13 @@ int main()
     size_t logNumber = 0;
     while (logNumber++ < LOGS_TO_SEND_COUNT) {
         kaa::KaaUserLogRecord powerReport;
-    	powerReport.timestamp = std::chrono::time_point_cast<std::chrono::milliseconds>(
+        powerReport.timestamp = std::chrono::time_point_cast<std::chrono::milliseconds>(
                                        std::chrono::high_resolution_clock::now()).time_since_epoch().count();
 
-	std::vector<kaa_log::PowerSample> samples;
+        std::vector<kaa_log::PowerSample> samples;
 
-    	for (std::size_t zoneId = 0; zoneId < ZONE_COUNT; ++zoneId) {
-	    for (std::size_t panelId = 0; panelId < PANEL_COUNT; ++panelId) {
+        for (std::size_t zoneId = 0; zoneId < ZONE_COUNT; ++zoneId) {
+            for (std::size_t panelId = 0; panelId < PANEL_COUNT; ++panelId) {
                 kaa_log::PowerSample sample;
                 sample.zoneId = zoneId;
                 sample.panelId = panelId;
@@ -99,12 +97,12 @@ int main()
 
                 samples.push_back(sample);
             }
-	}
+        }
 
-	powerReport.samples = std::move(samples);
-	kaaClient.addLogRecord(powerReport);
+        powerReport.samples = std::move(samples);
+        kaaClient.addLogRecord(powerReport);
 
-	std::this_thread::sleep_for(std::chrono::seconds(1));
+        std::this_thread::sleep_for(std::chrono::seconds(1));
     }
 
     // Wait for the Enter key before exiting.
