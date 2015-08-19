@@ -17,7 +17,7 @@ import java.util.Properties;
 public class Main {
     public static void main(String[] args) throws Throwable{
         Logger root = (Logger)LoggerFactory.getLogger(Logger.ROOT_LOGGER_NAME);
-        root.setLevel(Level.DEBUG);
+        root.setLevel(Level.INFO);
         Logger LOG = (Logger)LoggerFactory.getLogger(Main.class);
 
         Properties props = new Properties();

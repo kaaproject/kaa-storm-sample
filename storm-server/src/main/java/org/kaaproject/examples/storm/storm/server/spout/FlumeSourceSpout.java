@@ -27,7 +27,7 @@ public class 	FlumeSourceSpout implements IRichSpout {
 	public static final String FLUME_PROPERTY_PREFIX = "flume-agent";
 	public static final String PROP_FLUME_AGENT_NAME = "flume-agent";
 	public static final String PROP_FLUME_BATCH_SIZE = "batch-size";
-	public static final int BATCH_SIZE = 100;
+	public static final int BATCH_SIZE = 1;
 
 	private Channel channel;
 	private SourceRunner sourceRunner;
@@ -164,6 +164,7 @@ public class 	FlumeSourceSpout implements IRichSpout {
 				}
 				batch.add(event);
 			}
+			LOG.debug("Batch size: " + batch.size());
 			size = batch.size();
 			if (size == 0) {
 				sinkCounter.incrementBatchEmptyCount();
