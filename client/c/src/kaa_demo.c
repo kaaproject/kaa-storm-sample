@@ -46,14 +46,6 @@
 extern kaa_error_t ext_unlimited_log_storage_create(void **log_storage_context_p
                                                   , kaa_logger_t *logger);
 
-extern kaa_error_t ext_log_upload_strategy_by_volume_create(void **strategy_p
-                                                          , kaa_channel_manager_t   *channel_manager
-                                                          , kaa_bootstrap_manager_t *bootstrap_manager);
-
-extern kaa_error_t ext_log_upload_strategy_by_volume_set_threshold_count(void *strategy, size_t threshold_count);
-
-
-
 static kaa_client_t *kaa_client = NULL;
 
 static void *log_storage_context         = NULL;
